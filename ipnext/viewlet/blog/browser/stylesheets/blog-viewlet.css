@@ -1,0 +1,41 @@
+/*
+Style for ipnext.viewlet.blog
+
+Author: zedr <zedr@ipnext.it>
+        IPnext http://www.ipnext.it
+*/
+
+div#blog-viewlet {
+	margin-top: 1em;
+	float:left;
+	width: 100%;
+	background-color: #efefef;
+	border-radius: 0.5em;
+    border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+}
+div.blog-viewlet-post {
+	margin-right: 1.5em;
+}
+div.blog-viewlet-post img {
+	padding: 0.5em;
+	margin: 0.5em 1.5em 0.5em 0.5em;
+	border: 0.25em #fff solid;
+	float: left;
+	margin-top: -0.50em;
+}
+div.blog-viewlet-post h3 {
+	margin-top: 0.75em;
+}
+div.blog-viewlet-post p.post-excerpt {
+	font-size: 75%;
+}
+
+div.postViewletByLine {
+	font-size: 85%;
+	color: #666;
+	margin-bottom: 0.5em;
+}

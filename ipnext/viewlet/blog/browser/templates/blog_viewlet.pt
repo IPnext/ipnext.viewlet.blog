@@ -1,0 +1,28 @@
+<tal:block
+	tal:define="content_enabled view/is_enabled_content|nothing;
+					type_enabled view/is_enabled_type|nothing"
+	tal:condition="python: content_enabled and type_enabled">
+
+	<div id="blog-viewlet" tal:define="post view/post_contents;"
+		tal:condition="post">
+
+		<div class="blog-viewlet-post">
+			<img class="post-portrait" tal:attributes="src post/portrait_url"
+				alt="Author image" />
+			<h3>
+				<a tal:attributes="href post/document_url">
+					<span tal:content="post/title">Blog post title</span>
+				</a>
+			</h3>
+			<div class="postViewletByLine">
+				<p>
+					<span tal:content="post/author_name">Zak McKraken</span> &mdash;
+					<span tal:content="post/effective_date">11/11/11</span> 
+				</p>
+			</div>
+			<p class="post-excerpt" tal:content="post/description">Blog content</p>
+		</div>
+
+	</div>
+
+</tal:block>

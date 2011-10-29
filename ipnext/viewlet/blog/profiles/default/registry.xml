@@ -1,0 +1,5 @@
+<registry> 
+    <records 
+        interface="ipnext.viewlet.blog.interfaces.IIPnextViewletBlogSettings" 
+        /> 
+</registry> 

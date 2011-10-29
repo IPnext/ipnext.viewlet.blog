@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="ipnext.viewlet.blog"
+     interface="ipnext.viewlet.blog.browser.interfaces.IIPnextBlogViewletLayer"
+     />
+</layers>

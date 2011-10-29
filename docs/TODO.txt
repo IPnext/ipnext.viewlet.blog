@@ -1,0 +1,8 @@
+TODO list
+=========
+
+ * Make the queried content types selectable (not just 'News item')
+ * Control Panel item
+ * Internationalization
+ * Tests
+ * Selectively disable blob viewlets for certain content objects

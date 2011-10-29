@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ipnext.viewlet.blog">
+
+  <five:registerPackage package="." initialize=".initialize" />
+  
+  <includeDependencies package="." />
+  
+  <genericsetup:registerProfile
+      name="default"
+      title="IPnext blog viewlet"
+      directory="profiles/default"
+      description="Query the site for a relevant blog post and display it on the page, as a viewlet."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  
+  <include package=".browser" />
+
+</configure>

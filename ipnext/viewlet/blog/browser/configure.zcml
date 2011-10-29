@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="ipnext.viewlet.blog">
+    
+  <browser:viewlet
+      name="ipnext.blog_viewlet"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      layer=".interfaces.IIPnextBlogViewletLayer"
+	  class=".viewlets.RelevantBlogViewlet"
+      permission="zope2.View"
+      />
+
+  <browser:resourceDirectory
+      name="ipnext.viewlet.blog.stylesheets"
+      directory="stylesheets"
+      />
+    
+</configure>
