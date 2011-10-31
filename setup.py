@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.3'
+version = '0.3.1'
 
 setup(name='ipnext.viewlet.blog',
       version=version,
@@ -15,8 +15,8 @@ setup(name='ipnext.viewlet.blog',
         "Programming Language :: Python",
         ],
       keywords='',
-      author='',
-      author_email='',
+      author='zedr',
+      author_email='zedr@ipnext.it',
       url='http://svn.plone.org/svn/collective/',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
