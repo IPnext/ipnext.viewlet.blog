@@ -10,11 +10,6 @@ from ipnext.viewlet.blog.interfaces import IIPnextViewletBlogSettings
 # If something goes wrong with Registry, just set a standard max chars
 DEFAULT_MAX_CHARS = 500
 
-def getPublicMemberPortrait(member):
-    """
-    Fetch the portrait for a member.
-    """
-    return member.getPersonalPortrait(id=member.id)
 
 def excerptize(text, max_chars):
     """
@@ -48,17 +43,7 @@ class PortalBlogQuery(object):
             mimetype='text/-x-web-intelligent'
         )
         return transformed.getData()
-    
-    def get_author_image_url(self, member):
-        """
-        Fetch the author avatar image url accoding to name.
-        """
-        if member:
-            img_url = getPublicMemberPortrait(member).absolute_url()
-        else:
-            img_url = '/'.join((self.context.absolute_url(), mtool.default_portrait))
-        return img_url
-        
+
     def get_relevant_post(self, tags):
         """
         Query the catalog and retrieve a relevant post (News Item).
@@ -83,7 +68,7 @@ class PortalBlogQuery(object):
             author_info = mtool.getMemberInfo(member.id)
             author_name = author_info.get('fullname', author_id)
             author_home_url = author_info.get('home_page', None)
-            author_img_url = self.get_author_image_url(member)
+            author_img_url = mtool.getPersonalPortrait(id=member.id)
             
             # If the post doesn't have a description, generate one
             # using the content text.
