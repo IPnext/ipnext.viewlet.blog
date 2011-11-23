@@ -9,6 +9,8 @@ from plone.registry.interfaces import IRegistry
 from ipnext.viewlet.blog.browser.controllers import PortalBlogQuery
 from ipnext.viewlet.blog.interfaces import IIPnextViewletBlogSettings
 
+from ipnext.viewlet.blog import _
+
 class RelevantBlogViewlet(ViewletBase):
     """
     Renders a pretty box with the latest relevant post on a WP blog
