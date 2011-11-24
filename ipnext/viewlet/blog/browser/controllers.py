@@ -16,7 +16,8 @@ def excerptize(text, max_chars):
     Return a brief excerpt from a string of plain text.
     """
     cont_snip = '...'
-    words = text[:max_chars].split(' ')[:-1]
+    words = text[:max_chars].split(' ')
+    words = words[:-1] if len(words) > 1 else words
     return ' '.join(words + [' ', cont_snip])
     
 
@@ -77,7 +78,7 @@ class PortalBlogQuery(object):
                 obj = post.getObject()
                 html_txt = obj.getText()
                 post_description = self.html_to_text(html_txt)
-            
+                
             # Build the post data slug
             post_data = {
                 'title': post.Title,
