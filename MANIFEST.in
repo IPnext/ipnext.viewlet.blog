@@ -1,7 +1,9 @@
+exclude .gitignore MANIFEST.in
+recursive-exclude ipnext *.DS_Store
+
 include *.rst *.txt
 recursive-include docs *.txt
 recursive-include collective *.txt *.py *.po *.pt *.xml *.zcml *.js *.css
 
-exclude *.DS_Store
 
 global-exclude *.pyc *.pyo *.swp
