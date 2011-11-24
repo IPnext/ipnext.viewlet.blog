@@ -1,54 +1,22 @@
-import unittest
+import unittest2 as unittest
 
-from zope.testing import doctestunit
-from zope.component import testing
-from Testing import ZopeTestCase as ztc
+import transaction
 
-from Products.Five import zcml
-from Products.Five import fiveconfigure
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import PloneSite
-ptc.setupPloneSite()
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.testing.z2 import Browser
 
-import ipnext.viewlet.blog
+from Products.CMFCore.utils import getToolByName
 
-class TestCase(ptc.PloneTestCase):
-    class layer(PloneSite):
-        @classmethod
-        def setUp(cls):
-            fiveconfigure.debug_mode = True
-            zcml.load_config('configure.zcml',
-                             ipnext.viewlet.blog)
-            fiveconfigure.debug_mode = False
+from ipnext.viewlet.blog.testing import \
+        BlogViewletTestingLayer_INTEGRATION_TESTING
 
-        @classmethod
-        def tearDown(cls):
-            pass
+class TestSetup(unittest.TestCase):
 
+    layer = BlogViewletTestingLayer_INTEGRATION_TESTING
 
-def test_suite():
-    return unittest.TestSuite([
-
-        # Unit tests
-        #doctestunit.DocFileSuite(
-        #    'README.txt', package='ipnext.viewlet.blog',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-        #doctestunit.DocTestSuite(
-        #    module='ipnext.viewlet.blog.mymodule',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-
-        # Integration tests that use PloneTestCase
-        #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='ipnext.viewlet.blog',
-        #    test_class=TestCase),
-
-        #ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='ipnext.viewlet.blog',
-        #    test_class=TestCase),
-
-        ])
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+    def test__verify_installation(self):
+        """Check if installed"""
+        portal = self.layer['portal']
+        tool = getToolByName(portal, 'portal_quickinstaller')
+        self.assertTrue(tool.isProductInstalled('ipnext.viewlet.blog'))
