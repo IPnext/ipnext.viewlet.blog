@@ -7,7 +7,7 @@
 		tal:condition="post">
 
 		<div class="blog-viewlet-post">
-			<img class="post-portrait" tal:attributes="src post/portrait_url"
+			<img class="post-portrait" tal:replace="structure post/portrait"
 				alt="Author image" />
 			<h3>
 				<a tal:attributes="href post/document_url">

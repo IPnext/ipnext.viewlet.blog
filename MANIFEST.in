@@ -1,0 +1,9 @@
+include *.txt
+include *.rst
+
+exclude *.DS_Store
+
+recursive-include docs *
+recursive-include ipnext *
+
+global-exclude *pyc

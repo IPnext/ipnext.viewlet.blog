@@ -69,7 +69,7 @@ class PortalBlogQuery(object):
             author_info = mtool.getMemberInfo(member.id)
             author_name = author_info.get('fullname', author_id)
             author_home_url = author_info.get('home_page', None)
-            author_img_url = mtool.getPersonalPortrait(id=member.id)
+            author_img = mtool.getPersonalPortrait(id=member.id)
             
             # If the post doesn't have a description, generate one
             # using the content text.
@@ -85,7 +85,7 @@ class PortalBlogQuery(object):
                 'author_home_url': author_home_url,
                 'description': excerptize(post_description, self.maxchars),
                 'document_url': post.getURL(),
-                'portrait_url': author_img_url,
+                'portrait': author_img,
                 'effective_date': post.effective,
             }
             
