@@ -81,10 +81,4 @@ class RelevantBlogViewlet(ViewletBase):
         """
         tags = self.context.Subject()
         contents = self.controller.get_relevant_post(tags)
-        if not contents:
-            return None
-        
-        # Localize time
-        localize_time = self.context.toLocalizedTime
-        contents['effective_date'] = localize_time(contents['effective_date'])
         return contents

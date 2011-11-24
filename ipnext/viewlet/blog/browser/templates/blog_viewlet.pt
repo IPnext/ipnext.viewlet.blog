@@ -17,7 +17,8 @@
 			<div class="postViewletByLine">
 				<p>
 					<span tal:content="post/author_name">Zak McKraken</span> &mdash;
-					<span tal:content="post/effective_date">11/11/11</span> 
+					<span tal:define="date post/effective_date;"
+						  tal:content="python: context.toLocalizedTime(date)">11/11/11</span> 
 				</p>
 			</div>
 			<p class="post-excerpt" tal:content="post/description">Blog content</p>

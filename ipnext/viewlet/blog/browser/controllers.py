@@ -53,6 +53,7 @@ class PortalBlogQuery(object):
         relevant_posts = catalog(
             portal_type='News Item',
             Subject=tags,
+            review_state="published"
         )
         
         # Return a random relevant post
