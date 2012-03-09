@@ -22,6 +22,8 @@ class RelevantBlogViewlet(ViewletBase):
         """
         super(RelevantBlogViewlet, self).update() 
         self.controller = PortalBlogQuery(self.context)
+        self._tags = self.context.Subject()
+        self._post = self.controller.get_relevant_post(self._tags)
         
         return self.index()
     
@@ -73,12 +75,23 @@ class RelevantBlogViewlet(ViewletBase):
         """
         Return the categories tagged to the context object
         """
-        return self.context.Subject()
+        return self._tags
     
     def post_contents(self):
         """
         Query the catalog for the first relevant post, return None if not found.
         """
-        tags = self.context.Subject()
-        contents = self.controller.get_relevant_post(tags)
-        return contents
+        return self._post
+    
+    def localized_date(self):
+        """Return the localized time, or nothing if invalid"""
+        date_ = self._post['effective_date']
+        to_localized = self.context.toLocalizedTime
+        
+        try:
+            local_date = to_localized(date_)
+        except ValueError:
+            # An invalid date; just return nothing
+            local_date = None
+            
+        return local_date
